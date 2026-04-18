@@ -9,7 +9,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* лёгкий акцент стиля, но текст можно копировать */
         }
 
         body {
@@ -20,7 +19,6 @@
             min-height: 100vh;
         }
 
-        /* фиолетовое свечение */
         .glow-text {
             text-shadow: 0 0 6px #b77eff, 0 0 2px #9b4dff;
         }
@@ -30,7 +28,7 @@
             margin: 0 auto;
         }
 
-        /* хедер в стиле VozMusic */
+        /* хедер */
         .hero {
             text-align: center;
             margin-bottom: 3rem;
@@ -57,11 +55,70 @@
             backdrop-filter: blur(2px);
         }
 
-        /* панель поиска / фильтрация */
+        /* панель добавления трека */
+        .add-track-panel {
+            background: rgba(18, 10, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #6b3faf;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+        .add-field {
+            flex: 1;
+            min-width: 180px;
+        }
+        .add-field label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #bc93f0;
+            margin-bottom: 0.3rem;
+        }
+        .add-field input {
+            width: 100%;
+            background: #0e0718;
+            border: 1px solid #562e8a;
+            padding: 0.7rem 1rem;
+            border-radius: 40px;
+            color: #f2eaff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.2s;
+        }
+        .add-field input:focus {
+            border-color: #c084fc;
+            box-shadow: 0 0 8px #9f4dff;
+        }
+        .btn-add {
+            background: linear-gradient(95deg, #6a2ea0, #32125c);
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            margin-top: 1.2rem;
+        }
+        .btn-add:hover {
+            background: linear-gradient(95deg, #8b48c4, #4f1f88);
+            box-shadow: 0 0 12px #b77eff;
+        }
+
+        /* поиск */
         .search-bar {
             display: flex;
             justify-content: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             gap: 0.8rem;
             flex-wrap: wrap;
         }
@@ -75,15 +132,10 @@
             font-size: 1rem;
             outline: none;
             transition: all 0.2s;
-            backdrop-filter: blur(4px);
         }
         .search-bar input:focus {
             border-color: #c084fc;
             box-shadow: 0 0 12px #9f4dff;
-            background: #0e0718;
-        }
-        .search-bar input::placeholder {
-            color: #8a6eb0;
         }
         .search-bar button {
             background: linear-gradient(95deg, #3c1c5e, #1e0a2f);
@@ -94,17 +146,14 @@
             color: #e6d5ff;
             cursor: pointer;
             transition: 0.2s;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
             border: 1px solid #7c3aed;
         }
         .search-bar button:hover {
             background: linear-gradient(95deg, #5f2e8a, #321753);
             box-shadow: 0 0 10px #b77eff;
-            color: white;
         }
 
-        /* сетка треков */
+        /* сетка */
         .track-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -112,7 +161,6 @@
             margin: 2rem 0 3rem;
         }
 
-        /* карточка трека — чёрно-фиолетовый глянец */
         .track-card {
             background: rgba(12, 8, 20, 0.75);
             backdrop-filter: blur(8px);
@@ -120,7 +168,6 @@
             padding: 1.2rem;
             border: 1px solid #4a2b78;
             transition: transform 0.2s ease, box-shadow 0.2s;
-            box-shadow: 0 12px 22px -12px rgba(0, 0, 0, 0.6);
         }
         .track-card:hover {
             transform: translateY(-6px);
@@ -128,15 +175,9 @@
             box-shadow: 0 20px 30px -12px #4a1d9e40;
             background: rgba(18, 10, 30, 0.85);
         }
-        .track-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
         .track-title {
             font-size: 1.35rem;
             font-weight: 700;
-            letter-spacing: -0.3px;
             background: linear-gradient(135deg, #f0e9ff, #cdadff);
             -webkit-background-clip: text;
             background-clip: text;
@@ -148,32 +189,24 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            margin: 5px 0 8px 0;
         }
         .track-artist::before {
             content: "✦";
             font-size: 0.7rem;
             color: #b77eff;
         }
-        .audio-player {
-            width: 100%;
-            margin: 0.8rem 0;
-            height: 38px;
-            border-radius: 30px;
-        }
         audio {
             width: 100%;
             border-radius: 40px;
             background: #1f122f;
-        }
-        audio::-webkit-media-controls-panel {
-            background-color: #1f122f;
+            margin: 8px 0;
         }
         .track-actions {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
             gap: 0.5rem;
+            margin-top: 8px;
         }
         .btn-download, .btn-share {
             background: #221c30;
@@ -188,20 +221,13 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            backdrop-filter: blur(2px);
             border: 0.5px solid #673ab7;
         }
         .btn-download:hover, .btn-share:hover {
             background: #5c31a0;
             color: white;
-            border-color: #b77eff;
             box-shadow: 0 0 6px #b77eff;
         }
-        .btn-download:active, .btn-share:active {
-            transform: scale(0.96);
-        }
-
-        /* тост уведомление */
         .toast-msg {
             position: fixed;
             bottom: 30px;
@@ -220,8 +246,6 @@
             transition: opacity 0.2s;
             box-shadow: 0 0 20px #7e3bd2;
         }
-
-        /* футер */
         .footer-note {
             text-align: center;
             margin-top: 4rem;
@@ -230,19 +254,11 @@
             font-size: 0.8rem;
             color: #998bc7;
         }
-
-        /* адаптив */
         @media (max-width: 640px) {
-            body {
-                padding: 1.2rem;
-            }
-            .hero h1 {
-                font-size: 2.8rem;
-                letter-spacing: 3px;
-            }
-            .track-card {
-                padding: 1rem;
-            }
+            body { padding: 1.2rem; }
+            .hero h1 { font-size: 2.8rem; letter-spacing: 3px; }
+            .add-track-panel { flex-direction: column; align-items: stretch; }
+            .btn-add { margin-top: 0.5rem; }
         }
     </style>
 </head>
@@ -253,55 +269,68 @@
         <p class="glow-text">♫  голос музыки · скачай всё, что звучит ♫</p>
     </div>
 
+    <!-- Панель добавления трека из любого источника -->
+    <div class="add-track-panel">
+        <div class="add-field">
+            <label>🎵 НАЗВАНИЕ ТРЕКА</label>
+            <input type="text" id="newTrackTitle" placeholder="Например: Лунная соната">
+        </div>
+        <div class="add-field">
+            <label>🎤 ИСПОЛНИТЕЛЬ</label>
+            <input type="text" id="newTrackArtist" placeholder="Имя или группа">
+        </div>
+        <div class="add-field">
+            <label>🔗 ПРЯМАЯ ССЫЛКА НА АУДИО (MP3, OGG, WAV)</label>
+            <input type="text" id="newTrackUrl" placeholder="https://example.com/song.mp3">
+        </div>
+        <button class="btn-add" id="addTrackBtn">➕ ДОБАВИТЬ ТРЕК</button>
+    </div>
+
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="Исполнитель, трек или настроение...  ✦" autocomplete="off">
         <button id="searchBtn">⟡ НАЙТИ ⟡</button>
     </div>
 
-    <div id="trackContainer" class="track-grid">
-        <!-- динамически загруженные треки -->
-    </div>
+    <div id="trackContainer" class="track-grid"></div>
     <div class="footer-note">
-        🎧 VozMusic — слушай без границ. Любая музыка из открытых источников. Скачивай одним нажатием.
+        🎧 VozMusic — слушай без границ. Добавляй музыку с любых сайтов по прямой ссылке. Одна песня за раз.
     </div>
 </div>
 
 <script>
-    // ---------- МУЗЫКАЛЬНАЯ БАЗА "VozMusic" ----------
-    // Здесь представлена коллекция из разных жанров. Адреса треков — реальные публичные демо-ссылки (free music archive style)
-    // Для демонстрации работоспособности скачивания/прослушивания используются публичные треки с корректными CORS-заголовками (разрешены)
-    // Можно добавлять любые URL из интернета (прямые ссылки на mp3, ogg, wav)
-    const musicCatalog = [
-        { id: 1, title: "Сумеречный дрифт", artist: "VozMusic", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", cover: "" },
-        { id: 2, title: "Фиолетовый туман", artist: "NV", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", cover: "" },
-        { id: 3, title: "Electric Noir", artist: "Phantom Pulse", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", cover: "" },
-        { id: 4, title: "Глубокий басс", artist: "Luna 97", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", cover: "" },
-        { id: 5, title: "Rave in the Void", artist: "Neon Crypt", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", cover: "" },
-        { id: 6, title: "Стеклянные сны", artist: "Mirrorwaves", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", cover: "" },
-        { id: 7, title: "Purple Rain (cover)", artist: "Soul Vibe", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", cover: "" },
-        { id: 8, title: "Midnight Drift", artist: "VozMusic", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", cover: "" },
-        { id: 9, title: "Киберпанк 2077", artist: "Neon Sector", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", cover: "" },
-        { id: 10, title: "Last Echo", artist: "Dawn of Shadows", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", cover: "" }
+    // ---------- БАЗА ТРЕКОВ + ХРАНИЛИЩЕ ----------
+    let musicCatalog = [
+        { id: 1, title: "Сумеречный дрифт", artist: "VozMusic", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+        { id: 2, title: "Фиолетовый туман", artist: "NV", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+        { id: 3, title: "Electric Noir", artist: "Phantom Pulse", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+        { id: 4, title: "Глубокий басс", artist: "Luna 97", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
+        { id: 5, title: "Rave in the Void", artist: "Neon Crypt", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" },
+        { id: 6, title: "Стеклянные сны", artist: "Mirrorwaves", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" },
+        { id: 7, title: "Purple Rain (cover)", artist: "Soul Vibe", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" },
+        { id: 8, title: "Midnight Drift", artist: "VozMusic", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" },
+        { id: 9, title: "Киберпанк 2077", artist: "Neon Sector", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" },
+        { id: 10, title: "Last Echo", artist: "Dawn of Shadows", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" },
+        { id: 11, title: "Lost in Violet", artist: "Ethernal", url: "https://upload.wikimedia.org/wikipedia/commons/4/49/Beethovens_5th_Symphony_2nd_movement.ogg" },
+        { id: 12, title: "Lofi Noir", artist: "Purple Cat", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3" },
+        { id: 13, title: "Shadow Dance", artist: "MV", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3" },
+        { id: 14, title: "Город в огнях", artist: "VozMusic", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" },
+        { id: 15, title: "Ночной экспресс", artist: "Void Walker", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" }
     ];
 
-    // Дополнительные треки для разнообразия (ещё 5 разных источников, чтобы показать «из всего интернета»)
-    const extraTracks = [
-        { id: 11, title: "Lost in Violet", artist: "Ethernal", url: "https://upload.wikimedia.org/wikipedia/commons/4/49/Beethovens_5th_Symphony_2nd_movement.ogg", cover: "" },
-        { id: 12, title: "Lofi Noir", artist: "Purple Cat", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3", cover: "" },
-        { id: 13, title: "Shadow Dance", artist: "MV", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3", cover: "" },
-        { id: 14, title: "Город в огнях", artist: "VozMusic", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3", cover: "" },
-        { id: 15, title: "Ночной экспресс", artist: "Void Walker", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3", cover: "" }
-    ];
-
-    let fullTrackList = [...musicCatalog, ...extraTracks];
+    let fullTrackList = [...musicCatalog];
     let currentFiltered = [...fullTrackList];
+    let currentlyPlayingAudio = null;   // ссылка на текущий играющий элемент <audio>
 
-    // Элементы DOM
+    // DOM
     const trackContainer = document.getElementById("trackContainer");
     const searchInput = document.getElementById("searchInput");
     const searchBtn = document.getElementById("searchBtn");
+    const addTrackBtn = document.getElementById("addTrackBtn");
+    const newTitle = document.getElementById("newTrackTitle");
+    const newArtist = document.getElementById("newTrackArtist");
+    const newUrl = document.getElementById("newTrackUrl");
 
-    // функция показа тостов
+    // тост
     function showToast(message, duration = 2500) {
         let existingToast = document.querySelector(".toast-msg");
         if(existingToast) existingToast.remove();
@@ -315,14 +344,42 @@
         }, duration);
     }
 
-    // Скачивание трека по URL + красивое имя
+    // Функция, которая останавливает любой другой аудиоплеер (кроме переданного)
+    function stopOtherPlayers(currentAudioElement) {
+        if (currentlyPlayingAudio && currentlyPlayingAudio !== currentAudioElement) {
+            currentlyPlayingAudio.pause();
+            currentlyPlayingAudio.currentTime = 0;
+            // можно визуально сбросить, но главное — звук выключен
+        }
+        currentlyPlayingAudio = currentAudioElement;
+    }
+
+    // Установка обработчиков на каждый аудиоэлемент после рендера
+    function bindAudioHandlers() {
+        const allAudios = document.querySelectorAll('.audio-player');
+        allAudios.forEach(audio => {
+            // удаляем старые слушатели, чтобы не дублировать (простая замена)
+            const newAudio = audio.cloneNode(true);
+            audio.parentNode.replaceChild(newAudio, audio);
+            newAudio.addEventListener('play', function() {
+                stopOtherPlayers(newAudio);
+            });
+            newAudio.addEventListener('pause', function() {
+                if (currentlyPlayingAudio === newAudio) currentlyPlayingAudio = null;
+            });
+            newAudio.addEventListener('ended', function() {
+                if (currentlyPlayingAudio === newAudio) currentlyPlayingAudio = null;
+            });
+        });
+    }
+
+    // Скачивание
     async function downloadTrack(track) {
         const url = track.url;
         const filename = `${track.artist} - ${track.title}.mp3`;
         try {
-            // Пробуем fetch и преобразование в blob для максимальной совместимости скачивания
             const response = await fetch(url, { mode: 'cors' });
-            if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const blob = await response.blob();
             const blobUrl = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -334,11 +391,7 @@
             URL.revokeObjectURL(blobUrl);
             showToast(`✅ Скачано: ${track.title} — ${track.artist}`);
         } catch (err) {
-            console.warn(err);
-            // fallback: если fetch не сработал из-за CORS / политики, попробуем открыть ссылку в новом окне как прямое скачивание?
-            // для большинства публичных mp3 можно предложить сохранить как
-            showToast(`⚠️ Не удалось загрузить через fetch, но можно сохранить ссылкой.`, 2000);
-            // альтернативный вариант: предложить скачать через прямой переход
+            showToast(`⚠️ Не удалось загрузить через fetch, открываю ссылку.`, 2000);
             const a = document.createElement('a');
             a.href = url;
             a.download = filename;
@@ -349,25 +402,31 @@
         }
     }
 
-    // Поделиться треком (копировать ссылку)
     function shareTrack(track) {
         const shareText = `🎵 VozMusic: "${track.title}" — ${track.artist} Слушай здесь: ${track.url}`;
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(shareText).then(() => {
                 showToast(`🔗 Ссылка на трек скопирована! "${track.title}"`);
-            }).catch(() => {
-                prompt("Скопируйте ссылку на трек вручную:", shareText);
-            });
+            }).catch(() => prompt("Скопируйте ссылку:", shareText));
         } else {
-            prompt("Скопируйте информацию о треке:", shareText);
+            prompt("Скопируйте информацию:", shareText);
         }
     }
 
-    // Рендер сетки треков
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
     function renderTracks(tracksArray) {
         if (!trackContainer) return;
         if (tracksArray.length === 0) {
-            trackContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; background:#140b1f80; border-radius:2rem;">🌀 Ничего не найдено... измени запрос, VozMusic знает больше 🌀</div>`;
+            trackContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">🌀 Ничего не найдено... измени запрос или добавь трек по ссылке 🌀</div>`;
             return;
         }
         const html = tracksArray.map(track => `
@@ -375,11 +434,7 @@
                 <div class="track-info">
                     <div class="track-title">${escapeHtml(track.title)}</div>
                     <div class="track-artist">${escapeHtml(track.artist)}</div>
-                    <audio class="audio-player" controls preload="metadata">
-                        <source src="${track.url}" type="audio/mpeg">
-                        <source src="${track.url}" type="audio/ogg">
-                        Ваш браузер не поддерживает аудио.
-                    </audio>
+                    <audio class="audio-player" controls preload="metadata" src="${track.url}"></audio>
                     <div class="track-actions">
                         <button class="btn-download" data-id="${track.id}" data-url="${track.url}" data-title="${escapeHtml(track.title)}" data-artist="${escapeHtml(track.artist)}">⬇️ СКАЧАТЬ</button>
                         <button class="btn-share" data-id="${track.id}" data-url="${track.url}" data-title="${escapeHtml(track.title)}" data-artist="${escapeHtml(track.artist)}">⟳ ПОДЕЛИТЬСЯ</button>
@@ -389,22 +444,20 @@
         `).join('');
         trackContainer.innerHTML = html;
 
-        // привязка событий к кнопкам после рендера
+        // обработчики для кнопок
         document.querySelectorAll('.btn-download').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const id = parseInt(btn.getAttribute('data-id'));
-                const track = fullTrackList.find(t => t.id === id);
-                if (track) downloadTrack(track);
-                else {
-                    // fallback на атрибуты
-                    const fallbackTrack = {
+                let track = fullTrackList.find(t => t.id === id);
+                if (!track) {
+                    track = {
                         title: btn.getAttribute('data-title'),
                         artist: btn.getAttribute('data-artist'),
                         url: btn.getAttribute('data-url')
                     };
-                    downloadTrack(fallbackTrack);
                 }
+                downloadTrack(track);
             });
         });
 
@@ -412,34 +465,22 @@
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const id = parseInt(btn.getAttribute('data-id'));
-                const track = fullTrackList.find(t => t.id === id);
-                if (track) shareTrack(track);
-                else {
-                    const fallbackTrack = {
+                let track = fullTrackList.find(t => t.id === id);
+                if (!track) {
+                    track = {
                         title: btn.getAttribute('data-title'),
                         artist: btn.getAttribute('data-artist'),
                         url: btn.getAttribute('data-url')
                     };
-                    shareTrack(fallbackTrack);
                 }
+                shareTrack(track);
             });
         });
+
+        // ВАЖНО: после рендера привязать логику остановки других плееров
+        bindAudioHandlers();
     }
 
-    // простейший эскейп для защиты от XSS
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
-        });
-    }
-
-    // фильтрация по поиску (исполнитель, название)
     function filterTracks(searchTerm) {
         if (!searchTerm.trim()) {
             currentFiltered = [...fullTrackList];
@@ -453,66 +494,82 @@
         renderTracks(currentFiltered);
     }
 
-    // обработчики поиска
     function handleSearch() {
         const query = searchInput.value;
         filterTracks(query);
-        if(query.trim() !== "") {
-            showToast(`🔎 Поиск: "${query}" — ${currentFiltered.length} результатов`, 1800);
-        } else {
-            showToast(`✨ Показана вся коллекция VozMusic`, 1300);
+        if(query.trim()) showToast(`🔎 Найдено: ${currentFiltered.length} треков`, 1500);
+        else showToast(`✨ Вся коллекция VozMusic`, 1300);
+    }
+
+    // ========== ДОБАВЛЕНИЕ ТРЕКА ИЗ ЛЮБОГО ИСТОЧНИКА ==========
+    function isValidAudioUrl(url) {
+        return url && (url.includes('.mp3') || url.includes('.ogg') || url.includes('.wav') || url.includes('.m4a') || url.includes('.opus') || url.startsWith('https://') || url.startsWith('http://'));
+    }
+
+    function addCustomTrack() {
+        let title = newTitle.value.trim();
+        let artist = newArtist.value.trim();
+        let url = newUrl.value.trim();
+
+        if (!url) {
+            showToast("❌ Введите прямую ссылку на аудиофайл (mp3, ogg, wav)", 2500);
+            return;
         }
+        if (!title) title = "Трек из сети";
+        if (!artist) artist = "Внешний источник";
+
+        if (!isValidAudioUrl(url)) {
+            showToast("⚠️ Убедитесь, что ссылка ведёт на аудиофайл (.mp3, .ogg, .wav)", 3000);
+            return;
+        }
+
+        const newId = Date.now();
+        const newTrack = {
+            id: newId,
+            title: title,
+            artist: artist,
+            url: url
+        };
+        fullTrackList.push(newTrack);
+        // обновить отображение с учётом текущего поиска
+        filterTracks(searchInput.value);
+        showToast(`➕ Добавлен трек: ${title} — ${artist} (из внешнего источника)`, 2500);
+
+        // очистить поля, но оставить ссылку на случай повторного добавления похожей
+        newTitle.value = '';
+        newArtist.value = '';
+        newUrl.value = '';
     }
 
     searchBtn.addEventListener('click', handleSearch);
-    searchInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') handleSearch();
-    });
+    searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') handleSearch(); });
+    addTrackBtn.addEventListener('click', addCustomTrack);
 
-    // Инициализация: показываем все треки
+    // инициализация
     renderTracks(fullTrackList);
 
-    // Дополнительный фиолетовый стиль для плеера через небольшую инъекцию стилей (чтобы аудио контролы были в стиле)
+    // Стили для плеера
     const styleInject = document.createElement('style');
     styleInject.textContent = `
-        audio::-webkit-media-controls-panel {
-            background-color: #251a34 !important;
-            border-radius: 30px;
-        }
-        audio::-webkit-media-controls-play-button {
-            background-color: #aa66ff;
-            border-radius: 50%;
-        }
-        audio::-webkit-media-controls-current-time-display,
-        audio::-webkit-media-controls-time-remaining-display {
-            color: #e2caff;
-        }
-        audio::-webkit-media-controls-timeline {
-            background-color: #482e6e;
-            border-radius: 10px;
-        }
+        audio::-webkit-media-controls-panel { background-color: #251a34 !important; border-radius: 30px; }
+        audio::-webkit-media-controls-play-button { background-color: #aa66ff; border-radius: 50%; }
+        audio::-webkit-media-controls-current-time-display, audio::-webkit-media-controls-time-remaining-display { color: #e2caff; }
+        audio::-webkit-media-controls-timeline { background-color: #482e6e; border-radius: 10px; }
     `;
     document.head.appendChild(styleInject);
 
-    // Демонстрация "из всего интернета" — при желании пользователь может добавлять свои ссылки через консоль, но суть в том, что мы показали разные источники.
-    // Добавляем скрытое сообщение в консоль для продвинутых: инструкция добавления своего трека.
-    console.log("%c✨ VozMusic | Добавь свою музыку: fullTrackList.push({ id: Date.now(), title: 'Название', artist: 'Исполнитель', url: 'ПРЯМАЯ_ССЫЛКА_MP3' }); затем отфильтруй/обнови поиск ✨", "color: #bf7aff; font-size: 12px;");
-
-    // Бонус: если нужно вставить ссылку из любого URL, мы можем дать подсказку через "поделиться" но основной функционал:
-    // Также добавим глобальную возможность для расширения каталога (имитация сторонних треков)
+    // Глобальный API для консоли
     window.VozMusicAPI = {
         addTrack: (title, artist, url) => {
-            if(!title || !artist || !url) { showToast("❌ Заполни все поля: название, исполнитель, ссылка"); return false; }
+            if(!title || !artist || !url) { showToast("❌ Укажите название, исполнителя и ссылку"); return false; }
             const newId = Date.now();
-            const newTrack = { id: newId, title: String(title), artist: String(artist), url: String(url) };
-            fullTrackList.push(newTrack);
+            fullTrackList.push({ id: newId, title: String(title), artist: String(artist), url: String(url) });
             filterTracks(searchInput.value);
-            showToast(`➕ Добавлен трек: ${title} — ${artist}`, 2000);
+            showToast(`➕ Добавлен трек: ${title} — ${artist}`);
             return true;
         }
     };
-    // Небольшая подсказка для разработчика/энтузиаста
-    console.log("🎵 Используй window.VozMusicAPI.addTrack('Название', 'Исполнитель', 'https://ссылка.mp3') чтобы добавить любой трек из интернета");
+    console.log("%c✨ VozMusic | Добавляй любую музыку через панель ввода или через window.VozMusicAPI.addTrack()", "color: #bf7aff; font-size: 12px;");
 </script>
 </body>
 </html>
